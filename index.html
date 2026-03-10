@@ -3,142 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Groups Freezer</title>
+    <title>Groups Freezer | Smart Tab Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3b81f6;
-            --text-color: #334155;
-            --heading-color: #0f172a;
-            --bg-color: #f8fafc;
-            --container-bg: #ffffff;
+            --bg-color: #0b0f19;
+            --surface: rgba(17, 24, 39, 0.6);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-kofi: #ff5e5b;
+            --text-main: #f3f4f6;
+            --text-subtitle: #e2e8f0; /* Более светлый и читаемый цвет подзаголовка */
+            --text-muted: #9ca3af;
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
             background-color: var(--bg-color);
-            margin: 0;
-            padding: 40px 20px;
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
         }
-        
+
         .container {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
-            background: var(--container-bg);
-            padding: 50px 70px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 40px 24px 80px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
         }
-        
-        h1 {
-            color: var(--heading-color);
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.025em;
+
+        /* Навигация (Шапка) */
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: -20px;
         }
-        
-        .effective-date {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 2.5rem;
-            font-style: italic;
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
         }
-        
-        h2 {
-            color: var(--heading-color);
-            font-size: 1.4rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
+
+        /* Премиальное матовое стекло */
+        .glass-panel {
+            background: var(--surface);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s ease;
         }
-        
-        p {
-            margin-bottom: 1.2rem;
+        .glass-panel:hover { border-color: var(--border-hover); }
+
+        /* Герой */
+        .hero { text-align: center; }
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #e0e7ff 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
-        ul {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-subtitle);
+            max-width: 660px;
+            margin: 0 auto;
+            font-weight: 400;
         }
-        
-        li {
-            margin-bottom: 0.75rem;
-        }
-        
-        strong {
-            color: var(--heading-color);
-            font-weight: 600;
-        }
-        
-        code {
-            background-color: #f1f5f9;
-            padding: 0.2rem 0.4rem;
-            border-radius: 6px;
-            font-size: 0.9em;
-            color: var(--primary-color);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        }
-        
-        a {
-            color: var(--primary-color);
+
+        /* Главная кнопка Call to Action */
+        .btn-chrome {
+            background: var(--accent-blue);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            transition: all 0.2s ease;
+            margin-top: 36px;
+        }
+        .btn-chrome:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.6);
+            background: #2563eb;
+        }
+
+        /* Видео */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .video-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* Сетка формы и доната */
+        .grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 32px;
+        }
+        @media (max-width: 800px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .glass-panel { padding: 32px; }
+        }
+
+        /* Типографика панелей */
+        .panel-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+        }
+        .panel-header svg { color: var(--accent-purple); }
+        h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+        .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 32px; line-height: 1.5; }
+
+        /* Формы */
+        .input-group { margin-bottom: 20px; }
+        input, textarea {
+            width: 100%;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        input::placeholder, textarea::placeholder { color: #6b7280; }
+        input:focus, textarea:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Второстепенные кнопки */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 16px;
+            border-radius: 12px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; border: none; text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-submit {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+        .btn-submit:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
         
-        a:hover {
-            text-decoration: underline;
+        .btn-kofi {
+            background: #292830;
+            color: #fff;
+            border: 1px solid var(--border-light);
         }
-        
-        /* Адаптивность для мобильных устройств */
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+        .btn-kofi svg { color: var(--accent-kofi); }
+        .btn-kofi:hover {
+            border-color: var(--accent-kofi);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 94, 91, 0.15);
         }
+
+        /* Футер */
+        footer {
+            text-align: center; padding-top: 40px; border-top: 1px solid var(--border-light);
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--text-muted); text-decoration: none; transition: color 0.2s; margin: 0 12px;
+        }
+        footer a:hover { color: var(--text-main); }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Privacy Policy for Groups Freezer</h1>
-        <div class="effective-date">Effective Date: March 9, 2026</div>
+        
+        <nav class="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="40" height="40">
+              <rect x="26" y="16" width="76" height="24" rx="4" fill="#d93025"/>
+              <rect x="22" y="42" width="84" height="24" rx="4" fill="#e37400"/>
+              <rect x="18" y="68" width="92" height="24" rx="4" fill="#1e8e3e"/>
+              <rect x="14" y="94" width="100" height="24" rx="4" fill="#1a73e8"/>
+              <text x="64" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.3);">G</text>
+            </svg>
+            <span class="logo-text">GROUPS FREEZER</span>
+        </nav>
 
-        <p>This Privacy Policy applies to the <strong>"Groups Freezer"</strong> Chrome Extension (hereinafter referred to as "the Extension"). By using the Extension, you agree to the terms outlined in this policy.</p>
+        <header class="hero">
+            <h1>Freeze the clutter.<br>Unleash your browser.</h1>
+            <p>Save your computer's memory, organize your workspace into visual dashboards, and never lose your train of thought again.</p>
+            
+            <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" target="_blank" class="btn-chrome">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <line x1="21.17" y1="8" x2="12" y2="8"></line>
+                    <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+                    <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+                </svg>
+                Add to Chrome — It's Free
+            </a>
+        </header>
 
-        <h2>1. Data Collection and Storage</h2>
-        <p>Groups Freezer is designed with "Privacy by Design" principles. The Extension operates entirely locally on your device.</p>
-        <ul>
-            <li><strong>We do not collect, transmit, share, or sell any of your personal data.</strong> All data generated by the Extension, including your saved tabs, URLs, custom notes, tasks, and project history, is saved exclusively in your browser's local storage (<code>chrome.storage.local</code>).</li>
-            <li>No data is ever sent to our servers or any third-party databases. <strong>Everything you save is stored locally on your device, ensuring maximum security.</strong></li>
-        </ul>
+        <section class="glass-panel" style="padding: 24px;">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/tEs4Uw_go3U?si=T3ggT4z0IDgwweAB" 
+                    title="Groups Freezer - Smart Tab Management" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
 
-        <h2>2. How We Use Your Data</h2>
-        <p>The permissions requested by the Extension are used strictly for its core functionality:</p>
-        <ul>
-            <li><strong><code>&lt;all_urls&gt;</code> and <code>scripting</code>:</strong> Used solely at the moment you "freeze" a group to extract basic page metadata (such as titles, descriptions, and preview images) to create visual cards for your local dashboard. We do not track your browsing history or inject ads/trackers into the pages you visit.</li>
-            <li><strong><code>tabs</code> and <code>tabGroups</code>:</strong> Used to manage, close, and restore your tab groups as requested by you.</li>
-        </ul>
+        <section class="grid">
+            
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <h2>Submit Feedback</h2>
+                </div>
+                <p class="subtitle">Found a bug or have a feature request? Let me know directly.</p>
+                
+                <form action="https://formspree.io/f/xdawebbd" method="POST">
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="message" rows="4" placeholder="Describe the issue or share your idea..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                </form>
+            </div>
 
-        <h2>3. Third-Party Services</h2>
-        <p>The Extension does not use third-party analytics (like Google Analytics) or tracking tools. The only external request made by the Extension is to Google's public Favicon API (<code>https://www.google.com/s2/favicons</code>) to display website icons next to your saved links in the dashboard.</p>
+            <div class="glass-panel" style="display: flex; flex-direction: column;">
+                <div class="panel-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                    <h2>Support the App</h2>
+                </div>
+                <p class="subtitle" style="flex-grow: 1;">Groups Freezer is built by a solo developer. If this extension saves you RAM and time, consider supporting future updates.</p>
+                
+                <a href="https://ko-fi.com/K3K21VOTE9" target="_blank" class="btn btn-kofi">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.051-3.954-1.094-1.465-1.083-3.975.061-4.878.536-.425 1.097-.205 1.828-.052.365.076.762.391 1.005.814.16.28.495.278.657-.003.245-.426.646-.741 1.012-.815.728-.15 1.287-.373 1.823.051 1.152.91.109 3.514-.906 4.928zm7.29 -.196c-.663 1.574-2.529 1.623-2.529 1.623l-.025-4.631c.621 0 2.417-.201 2.87 1.135z"/></svg>
+                    Support on Ko-fi
+                </a>
+            </div>
 
-        <h2>4. Data Retention and Deletion</h2>
-        <p>Because all data is stored locally on your device, you have complete control over it. You can permanently delete all your data at any time by:</p>
-        <ul>
-            <li>Deleting groups or clearing the archive directly within the Extension's interface.</li>
-            <li>Uninstalling the Extension from your browser, which will automatically wipe its local storage.</li>
-        </ul>
+        </section>
 
-        <h2>5. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons.</p>
+        <footer>
+            <div style="margin-bottom: 12px;">© 2026 Groups Freezer. Built for productivity.</div>
+            <div>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="mailto:rollercoasterxxl@gmail.com">Contact Developer</a>
+            </div>
+        </footer>
 
-        <h2>6. Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy or your data, please contact the developer via the support link provided in the Chrome Web Store.</p>
     </div>
 </body>
-</html> 
+</html>
