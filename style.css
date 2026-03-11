@@ -1,5 +1,4 @@
 :root {
-    /* Вернули глубокий темно-синий цвет из оригинала */
     --bg-color: #080b12;
     --surface: #111520;
     --surface-hover: #1a2235;
@@ -26,7 +25,6 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    /* Вернули цветные свечения на фон + оставили тонкую премиальную сетку */
     background-image: 
         radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
@@ -50,7 +48,13 @@ body {
 .navbar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+.navbar-left {
+    display: flex;
+    align-items: center;
     gap: 12px;
+    text-decoration: none;
 }
 .logo-text {
     font-weight: 700;
@@ -70,10 +74,11 @@ body {
     line-height: 1.1;
     margin-bottom: 24px;
     letter-spacing: -0.04em;
-    /* Вернули синеватый отлив градиенту текста */
     background: linear-gradient(180deg, #ffffff 0%, #93c5fd 100%);
     -webkit-background-clip: text;
+    background-clip: text; /* Исправление для VS Code */
     -webkit-text-fill-color: transparent;
+    color: transparent; /* Фоллбэк */
 }
 .hero p {
     font-size: 1.25rem;
@@ -257,6 +262,20 @@ input:focus, textarea:focus, select:focus {
     transform: translateY(-1px);
 }
 
+.btn-ghost {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-strong);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* Developer Profile */
 .dev-profile {
     display: flex;
@@ -271,7 +290,6 @@ input:focus, textarea:focus, select:focus {
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    /* Убрал черно-белый фильтр, вернул оригинальные цвета фото */
     border: 2px solid var(--border-light);
 }
 .dev-info {
@@ -341,7 +359,6 @@ input:focus, textarea:focus, select:focus {
     transition: color 0.2s;
 }
 
-/* Hover & Highlight States */
 .tier-card:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--border-strong);
@@ -357,7 +374,6 @@ input:focus, textarea:focus, select:focus {
     color: var(--text-main);
 }
 
-/* Highlight Tier (Sponsor) */
 .tier-card-highlight {
     border-color: rgba(59, 130, 246, 0.3);
     background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
@@ -372,6 +388,50 @@ input:focus, textarea:focus, select:focus {
 .tier-card-highlight:hover {
     border-color: var(--accent-blue);
     box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+/* Privacy Policy Specific Styles */
+.policy-content {
+    padding: 48px 64px;
+}
+.policy-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    background: linear-gradient(180deg, #ffffff 0%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text; /* Исправление для VS Code */
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Фоллбэк */
+    letter-spacing: -0.02em;
+}
+.policy-content h2 {
+    margin-top: 40px;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 12px;
+    font-size: 1.4rem;
+}
+.policy-content p, .policy-content li {
+    color: var(--text-subtitle);
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+}
+.policy-content ul {
+    padding-left: 24px;
+    margin-bottom: 24px;
+}
+.policy-content strong {
+    color: #e2e8f0;
+    font-weight: 600;
+}
+.policy-content code {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 6px;
+    color: var(--accent-blue);
+    font-family: monospace;
+    border: 1px solid var(--border-light);
 }
 
 /* Footer */
@@ -408,4 +468,6 @@ footer {
     .hero h1 { font-size: 2.75rem; }
     .grid { grid-template-columns: 1fr; }
     .glass-panel { padding: 32px 24px; }
+    .policy-content { padding: 32px 24px; }
+    .policy-content h1 { font-size: 2rem; }
 }
